@@ -1,0 +1,428 @@
+@use "../abstract" as *;
+
+.button-1:not(.homepage .button-1) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: fit-content;
+    column-gap: 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: var(--transition);
+
+    border-radius: 30px;
+    padding-block: 10px;
+    padding-inline: 20px 10px;
+    @include font(16px, 16px, 500);
+    column-gap: 10px;
+    position: relative;
+    overflow: hidden;
+
+    span {
+        position: relative;
+        z-index: 2;
+        padding-top: 1px;
+    }
+
+
+    &::before {
+        content: "";
+        position: absolute;
+        background-color: var(--black);
+        z-index: 1;
+        width: 100%;
+        inset-inline: 0;
+        height: 100%;
+        transform: translateY(100%);
+        transition: var(--transition);
+        border-radius: inherit;
+        animation: slide-out var(--transition) forwards;
+    }
+
+    @include hover() {
+        &::before {
+            animation: slide-in var(--transition) forwards;
+        }
+    }
+
+    .circle-button {
+        transition: var(--transition);
+        width: 28px;
+        height: 28px;
+        position: relative;
+        z-index: 2;
+
+        svg {
+            width: 10px;
+            height: auto;
+        }
+    }
+
+    @include hover() {
+        .circle-button {
+            rotate: 45deg;
+        }
+    }
+}
+
+
+
+
+
+.homepage .button-1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: fit-content;
+    backdrop-filter: blur(24px);
+    transition: var(--transition);
+
+    border-radius: 30px;
+    padding-block: 10px;
+    padding-inline: 20px 10px;
+    @include font(16px, 16px, 500);
+    column-gap: 10px;
+    position: relative;
+    overflow: hidden;
+
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: -1;
+        padding: 1px;
+    }
+
+    @include hover() {
+        backdrop-filter: blur(0px);
+
+        .circle-button {
+            backdrop-filter: blur(24px);
+            rotate: 45deg;
+        }
+    }
+
+
+    .circle-button {
+        transition: var(--transition);
+        width: 28px;
+        height: 28px;
+        position: relative;
+        z-index: 2;
+        background: var(--black);
+        position: relative;
+
+        svg {
+            width: 10px;
+            height: auto;
+        }
+
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+            padding: .5px;
+            transition: var(--transition);
+        }
+    }
+}
+
+
+html[data-theme="dark"] {
+    .homepage .button-1 {
+        background-color: #FAFAFA26;
+        color: var(--white);
+
+        &::before {
+            background: linear-gradient(141.8deg, rgba(255, 255, 255, 0.5) 25.32%, rgba(255, 255, 255, 0) 97.34%);
+        }
+
+
+        .circle-button {
+            &::before {
+                background: var(--black);
+            }
+        }
+
+
+        @include hover() {
+            backdrop-filter: blur(0px);
+            background-color: var(--black);
+
+            .circle-button {
+                background-color: #FAFAFA26;
+
+                &::before {
+                    background: linear-gradient(141.8deg, rgba(255, 255, 255, 0.5) 25.32%, rgba(255, 255, 255, 0) 97.34%);
+                }
+            }
+        }
+    }
+}
+
+html[data-theme="light"] {
+    .homepage .button-1 {
+        background-color: #1A1A1A1A;
+        color: var(--black);
+
+        &::before {
+            background: linear-gradient(141.8deg, rgba(26, 26, 26, 0.5) 25.32%, rgba(26, 26, 26, 0) 97.34%);
+        }
+
+
+        .circle-button {
+            background-color: var(--white);
+            color: var(--black);
+            // &::before {
+            //     background: var(--white);
+            // }
+        }
+
+
+        @include hover() {
+            backdrop-filter: blur(0px);
+            background-color: var(--white);
+
+            .circle-button {
+                background-color: #1A1A1A1A;
+
+                &::before {
+                    background: linear-gradient(141.8deg, rgba(26, 26, 26, 0.5) 25.32%, rgba(26, 26, 26, 0) 97.34%);
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+@keyframes slide-in {
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-out {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
+}
+
+html[data-theme="dark"] .button-1:not(.homepage .button-1) {
+    background-color: var(--white);
+    color: var(--black);
+
+    @include hover() {
+        border-color: var(--white);
+        color: var(--white);
+
+        &::before {
+            background-color: var(--black);
+        }
+
+        .circle-button {
+            background-color: var(--white);
+            color: var(--black);
+        }
+    }
+
+    .circle-button {
+        background-color: var(--black);
+        color: var(--white);
+    }
+}
+
+html[data-theme="light"] .button-1:not(.homepage .button-1) {
+    background-color: var(--black);
+    color: var(--white);
+
+    @include hover() {
+        border-color: var(--black);
+        color: var(--black);
+
+        &::before {
+            background-color: var(--white);
+        }
+
+        .circle-button {
+            background-color: var(--black);
+            color: var(--white);
+        }
+    }
+
+    .circle-button {
+        background-color: var(--white);
+        color: var(--black);
+    }
+}
+
+
+.button-2 {
+    padding-inline: 0;
+    @include font(14px, 1, 500);
+    position: relative;
+    width: fit-content;
+    transition: var(--transition);
+
+    &::after {
+        content: '';
+        background-color: currentColor;
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+    }
+}
+
+
+.circle-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    border-radius: 100%;
+
+    transition: var(--transition);
+    border: 1px solid transparent;
+    width: clamp(2.25rem, 1.169vw + 1.936rem, 2.813rem); //45->36
+    height: clamp(2.25rem, 1.169vw + 1.936rem, 2.813rem); //45->36
+
+    svg {
+        width: 17px;
+        height: auto;
+        aspect-ratio: 1;
+        color: inherit;
+    }
+
+    // @include hover() {
+    // }
+}
+
+html[data-theme="dark"] {
+    .circle-button:not(.social-media .circle-button, .button-1 .circle-button) {
+        background-color: var(--white);
+        color: var(--black);
+    }
+
+    .social-media .circle-button {
+        border-color: var(--white);
+        color: var(--white);
+    }
+}
+
+
+html[data-theme="light"] {
+    .circle-button:not(.social-media .circle-button, .button-1 .circle-button) {
+        background-color: var(--black);
+        color: var(--white);
+    }
+
+    .social-media .circle-button {
+        border-color: var(--black);
+        color: var(--black);
+    }
+}
+
+
+
+
+.listen {
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    column-gap: 11px;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+html[data-theme="dark"] {
+    .listen:not(.popular-podcasts .listen) {
+        background: #FAFAFA1A;
+    }
+}
+
+html[data-theme="light"] {
+    .listen {
+        background: #1A1A1A26;
+    }
+}
+
+
+.theme-button {
+    transition: var(--transition);
+
+    svg {
+        width: 19px;
+        height: 19px;
+        color: inherit;
+    }
+}
+
+
+
+
+
+
+
+.song-progress path {
+    transform-origin: bottom center;
+}
+
+
+@keyframes smoothWave {
+    0% {
+        transform: scaleY(0.8);
+        opacity: 0.8;
+    }
+
+    25% {
+        transform: scaleY(1.1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scaleY(0.9);
+        opacity: 0.9;
+    }
+
+    75% {
+        transform: scaleY(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleY(0.8);
+        opacity: 0.8;
+    }
+}

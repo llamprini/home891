@@ -1,0 +1,134 @@
+@use "../abstract/" as *;
+
+.about-us-page {
+    padding-block: clamp(6.875rem, 4.95vw + 5.545rem, 10rem) clamp(2.5rem, 14.059vw - 1.278rem, 11.375rem); //160->110 182->40
+
+    .clear-circle {
+        @include breakpoint('>lg') {
+            width: clamp(12.375rem, 29.464vw - 5.893rem, 20.625rem); //330->198
+        }
+
+        @include breakpoint('<lg') {
+            width: clamp(12.375rem, 23.529vw + 6.051rem, 20.625rem); //330->198
+        }
+
+        background: #FAFAFA1A;
+        z-index: 10;
+        backdrop-filter: blur(10px);
+
+        div {
+            width: 100%;
+            height: 100%;
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                padding: 1px;
+                border-radius: inherit;
+                -webkit-mask:
+                    linear-gradient(#fff 0 0) content-box,
+                    linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                z-index: -1;
+                background: linear-gradient(180deg, rgba(250, 250, 250, 0.5) 0%, rgba(250, 250, 250, 0) 100%);
+                border-radius: 100%;
+            }
+        }
+
+    }
+
+    .text.center {
+        row-gap: 27px;
+        max-width: 756px;
+        margin-bottom: clamp(4.625rem, 2.574vw + 3.933rem, 6.25rem); //100->74
+    }
+
+    .about {
+        display: flex;
+        flex-direction: column;
+        row-gap: clamp(2.375rem, 6.139vw + 0.725rem, 6.25rem); //100->38
+
+        .row {
+            @include breakpoint('>lg') {
+                --bs-gutter-x: clamp(2.5rem, 4.653vw + 1.249rem, 5.438rem); //87->40
+                justify-content: center;
+            }
+
+            @include breakpoint('<lg') {
+                row-gap: clamp(2.188rem, 1.485vw + 1.788rem, 3.125rem); //50->35
+            }
+
+
+            &:nth-child(odd) {
+                .golden-img {
+                    @include breakpoint('>lg') {
+                        .clear-circle {
+                            top: 80px; //-196->-100
+                            left: calc((-1) * clamp(8.125rem, 19.866vw - 4.192rem, 13.688rem)); //-219->-130
+                        }
+                    }
+                }
+
+                .golden-img {
+                    @include breakpoint('<lg') {
+                        .clear-circle {
+                            top: 70px; //-100->-75
+                            left: calc((-1) * clamp(6.25rem, 6.931vw + 4.387rem, 10.625rem)); //170->-100
+                        }
+                    }
+                }
+            }
+
+
+            &:nth-child(even) {
+                >* {
+                    &:first-child {
+                        @include breakpoint('>lg') {
+                            order: 1;
+                        }
+
+                        .golden-img {
+                            @include breakpoint('>lg') {
+                                .clear-circle {
+                                    bottom: calc((-1) * clamp(6.25rem, 21.429vw - 7.036rem, 12.25rem)); //-196->-100
+                                    right: calc((-1) * clamp(8.125rem, 19.866vw - 4.192rem, 13.688rem)); //-219->-130
+                                }
+                            }
+                        }
+
+                        .golden-img {
+                            @include breakpoint('<lg') {
+                                .clear-circle {
+                                    bottom:calc(-134px + clamp(0rem, 38.935vw - 9.49rem, 14.625rem)); //-100->-75
+                                    right: calc((-1) * clamp(6.25rem, 6.931vw + 4.387rem, 10.625rem)); //170->-100
+                                }
+                            }
+                        }
+                    }
+
+                    &:last-child {
+                        @include breakpoint('>lg') {
+                            order: 0;
+                        }
+                    }
+                }
+            }
+
+
+            .image-wrapper {
+                width: 100%;
+                border-radius: 20px;
+
+                img {
+                    aspect-ratio: 466/414;
+                }
+            }
+
+            .text {
+                row-gap: 15px;
+            }
+        }
+    }
+}

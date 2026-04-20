@@ -1,0 +1,68 @@
+@use "../abstract" as *;
+
+.clear-circle {
+    position: absolute;
+    z-index: 10;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    backdrop-filter: blur(24px);
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1px;
+        border-radius: inherit;
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: -1;
+        border-radius: inherit;
+    }
+}
+
+
+.golden-circle {
+    position: absolute;
+    z-index: -1;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    width: clamp(19.188rem, 33.036vw - 1.295rem, 28.438rem); //455->307
+
+    @include breakpoint('<lg') {
+        width: clamp(15rem, 11.943vw + 11.79rem, 19.188rem);
+    }
+}
+
+
+.roundandround {
+    -webkit-backface-visibility: hidden;
+    /* ενεργοποιεί GPU rendering */
+    -webkit-transform: translateZ(0);
+    /* force GPU compositing */
+    will-change: transform, opacity;
+    /* λέει στο browser ότι θα αλλάζει συχνά */
+}
+
+
+html[data-theme="dark"] {
+    .clear-circle {
+        background: #FAFAFA1A;
+
+        &::before {
+            background: linear-gradient(180deg, rgba(250, 250, 250, 0.5) 0%, rgba(250, 250, 250, 0) 100%);
+        }
+    }
+}
+
+html[data-theme="light"] {
+    .clear-circle {
+        background: #1A1A1A26;
+
+        &::before {
+            background: linear-gradient(180deg, rgba(250, 250, 250, 0.5) 0%, rgba(26, 26, 26, 0) 100%);
+        }
+    }
+}

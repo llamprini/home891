@@ -1,0 +1,15 @@
+@use "../abstract/" as *;
+
+.terms-page{
+    padding-block: clamp(6.875rem, 4.95vw + 5.545rem, 10rem); //160->110
+
+    .text.center{
+        max-width: 955px;
+        margin-bottom: 100px;
+    }
+
+    .html-content{
+        max-width: 900px;
+        margin-inline: auto;
+    }
+}

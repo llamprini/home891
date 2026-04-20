@@ -1,0 +1,59 @@
+@use "../abstract/" as *;
+
+.single-producer {
+    padding-block: clamp(6.875rem, 4.95vw + 5.545rem, 10rem) clamp(0rem, 2.574vw - 0.692rem, 1.625rem); //160-110 26->0
+
+    .text {
+        row-gap: 10px;
+
+        .smallest-line {
+            margin-bottom: 20px;
+
+            @include breakpoint('<lg') {
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+    .button-1 {
+        margin-top: 40px;
+    }
+
+    .producer:not(.producers-section .producer) {
+        .row {
+            row-gap: 40px;
+
+            @include breakpoint('>lg') {
+                --bs-gutter-x: clamp(2.813rem, 4.257vw + 1.668rem, 5.5rem); //88->45
+            }
+        }
+
+        .image-wrapper {
+            aspect-ratio: 488/480;
+            border-radius: 20px;
+
+            &::before {
+                position: absolute;
+                content: '';
+                inset: 0;
+                z-index: 5;
+                -webkit-mask: radial-gradient(circle at 50% 50%, transparent 50%, black 51%);
+                mask: radial-gradient(circle at 50% 50%, transparent 67%, black 68%);
+                background-color: var(--brown);
+            }
+        }
+    }
+
+    .producers-section {
+        padding-block: clamp(8.5rem, 3.366vw + 7.595rem, 10.625rem) 0; //170->136
+
+        .swiper-slide {
+            max-width: clamp(25rem, 33.408vw + 4.308rem, 34.375rem); //550->400
+            display: flex;
+            justify-content: center;
+            &>*{
+                max-width: 254px;
+            }
+        }
+    }
+}

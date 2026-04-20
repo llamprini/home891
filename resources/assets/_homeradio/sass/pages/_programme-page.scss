@@ -1,0 +1,20 @@
+@use "../abstract/" as *;
+
+.programme-page {
+    .programme-section {
+        padding-block: clamp(6.875rem, 4.95vw + 5.545rem, 10rem) clamp(3.75rem, 6.931vw + 1.887rem, 8.125rem); //160->110 160->60
+
+        .golden-circle.first {
+            top: 40%;
+        }
+
+
+        .golden-circle.second {
+            bottom: -20%;
+        }
+    }
+
+    .button-1 {
+        display: none;
+    }
+}

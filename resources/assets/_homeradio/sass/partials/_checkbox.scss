@@ -1,0 +1,106 @@
+@use "../abstract" as *;
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    max-width: fit-content;
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    font-variation-settings: "wght" 400;
+    line-height: 17px;
+    letter-spacing: -0.29px;
+
+    @media (max-width: 991px) {
+        font-size: 15px;
+        line-height: 18px;
+        letter-spacing: normal;
+    }
+
+
+    span a {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+
+        @media (pointer: fine) and (hover: hover) {
+            &:hover {
+                color: #595A59;
+            }
+        }
+    }
+
+    input[type=checkbox]:checked {
+        border: 1px solid #979797;
+
+        &::after {
+            transform: scale(1);
+        }
+    }
+
+    input {
+        appearance: none;
+        cursor: pointer;
+        place-content: center;
+        transition: .4s ease-in-out;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+
+        background-color: transparent;
+        border-radius: 50%;
+        width: 17px;
+        height: 17px;
+        margin-right: 12px;
+
+
+        &::after {
+            content: "";
+            transform: scale(0);
+            transition: .4s ease-in-out;
+            fill: var(--black);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+
+            width: 11px;
+            height: 7px;
+
+        }
+    }
+}
+
+html[data-theme="dark"] {
+    .checkbox {
+        input {
+            border: 1px solid #979797;
+
+            &::after {
+                background-image: url(/public/_homeradio/images/extra/check.svg);
+            }
+        }
+
+        input[type=checkbox]:checked {
+            border: 1px solid var(--white);
+        }
+    }
+}
+
+html[data-theme="light"] {
+    .checkbox {
+        input {
+            border: 1px solid #979797;
+
+            &::after {
+                background-image: url(/public/_homeradio/images/extra/check-d.svg);
+            }
+        }
+
+        input[type=checkbox]:checked {
+            border: 1px solid var(--black);
+        }
+    }
+}

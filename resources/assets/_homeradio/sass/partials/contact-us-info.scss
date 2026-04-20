@@ -1,0 +1,120 @@
+@use "../abstract" as *;
+
+.contact-us {
+    position: relative;
+
+    .golden-circle {
+        bottom: -133px;
+        width: 241px;
+        left: unset;
+        right: -37px;
+        background: linear-gradient(252.21deg, #DFBD69 5.54%, #926F34 86.89%);
+    }
+
+    .contact-and-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        row-gap: 40px;
+        padding: 30px;
+        backdrop-filter: blur(24px);
+        border-radius: 20px;
+        max-width: 440px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 2px;
+            border-radius: inherit;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            row-gap: 10px;
+            @include font(16px, 30px, 400); //38->28
+
+            li {
+                display: flex;
+                column-gap: 10px;
+                text-align: start;
+                transition: var(--transition);
+
+                @include hover(){
+                    color: var(--brown);
+                }
+
+                svg:not(.circle-button svg) {
+                    min-height: 14px !important;
+                    width: auto;
+                    margin-top: 7px;
+                    color: currentColor;
+                }
+            }
+        }
+
+
+        .small-title {
+            .circle-button {
+                width: 45px;
+                height: 45px;
+                display: none;
+            }
+        }
+    }
+
+    .contact-and-info-social {
+        margin-top: 22px;
+
+        .social-media {
+            column-gap: 17px;
+        }
+
+        .circle-button:not(footer .contact-and-info-social  .circle-button) {
+            width: 30px;
+            height: 30px;
+
+            svg {
+                height: 15px;
+            }
+
+        }
+
+        .mail {
+            display: none;
+        }
+    }
+}
+
+html[data-theme="dark"] {
+    .contact-us {
+        .contact-and-info {
+            background: #FAFAFA1A;
+
+            &::after {
+                background: linear-gradient(137.63deg, rgba(255, 255, 255, 0.5) 16.13%, rgba(255, 255, 255, 0) 76.89%);
+            }
+        }
+    }
+}
+
+html[data-theme="light"] {
+    .contact-us {
+        .contact-and-info {
+            background: #1A1A1A1A;
+
+            &::after {
+                background: linear-gradient(237.52deg, rgba(250, 250, 250, 0.5) 8.59%, rgba(250, 250, 250, 0) 67.56%);
+            }
+        }
+    }
+}

@@ -1,0 +1,130 @@
+// @use "breakpoints" as *;
+
+
+@mixin breakpoint($class) {
+    @if $class =='<xs' {
+        @media (max-width: 400px) {
+            @content;
+        }
+    }
+
+    @else if $class =='<sm' {
+        @media (max-width: 575px) {
+            @content;
+        }
+    }
+
+    @else if $class =='>sm' {
+        @media (min-width: 576px) {
+            @content;
+        }
+    }
+
+    @else if $class =='=sm' {
+        @media (min-width: 576px) and (max-width: 767px) {
+            @content;
+        }
+    }
+
+    @else if $class =='=mobile-tablet' {
+        @media (min-width: 576px) and (max-width: 991px) {
+            @content;
+        }
+    }
+
+    @else if $class =='<md' {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+
+    @else if $class =='>md' {
+        @media (min-width: 768px) {
+            @content;
+        }
+    }
+
+    // @else if $class =='=md' {
+    //     @media (min-width: 768px) and (max-width: 991px) {
+    //         @content;
+    //     }
+    // }
+
+    @else if $class =='<lg' {
+        @media (max-width: 991px) {
+            @content;
+        }
+    }
+
+    @else if $class =='>lg' {
+        @media (min-width: 992px) {
+            @content;
+        }
+    }
+
+    // @else if $class =='=lg' {
+    //     @media (min-width: 992px) and (max-width: 1200px) {
+    //         @content;
+    //     }
+    // }
+
+    @else if $class =='<xl' {
+        @media (max-width: 1200px) {
+            @content;
+        }
+    }
+
+    @else if $class =='>xl' {
+        @media (min-width: 1201px) {
+            @content;
+        }
+    }
+
+    @else if $class =='=lg-xl' {
+        @media (min-width: 992px) and (max-width: 1400px) {
+            @content;
+        }
+    }
+
+    @else if $class =='=xl-xxl' {
+        @media (min-width: 1200px) and (max-width: 1400px) {
+            @content;
+        }
+    }
+
+    @else if $class =='<xxl' {
+        @media (max-width: 1400px) {
+            @content;
+        }
+    }
+
+    @else if $class =='>xxl' {
+        @media (min-width: 1401px) {
+            @content;
+        }
+    }
+}
+
+
+@mixin hover() {
+    @media (pointer: fine) and (hover: hover) {
+        &:hover,
+        &:focus-visible {
+            @content;
+        }
+    }
+}
+
+@mixin mqCoarse() {
+    @media (pointer: coarse) and (hover: none) {
+        @content;
+    }
+}
+
+@mixin font($size: 1rem, $height: 1em, $weight: 400, $spacing: normal) {
+    font-size: $size;
+    line-height: $height;
+    font-weight: $weight;
+    // font-variation-settings: "wght"$weight;
+    letter-spacing: $spacing;
+}

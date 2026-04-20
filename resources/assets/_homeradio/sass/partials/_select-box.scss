@@ -1,0 +1,98 @@
+@use "../abstract" as *;
+
+.select-box {
+
+    .select-button,
+    .select-menu li {
+        text-decoration: none;
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 11px;
+        letter-spacing: -0.356px;
+        transition: 200ms;
+
+        @media screen and (max-width: 1200px) {
+            font-size: 26px;
+            line-height: 24px;
+        }
+    }
+
+    .select-button {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        border-radius: 0%;
+        width: 100%;
+        color: #1A1919;
+
+        @media screen and (max-width: 1200px) {
+            padding-left: 0;
+        }
+
+        div {
+            padding-right: 5px;
+        }
+    }
+
+
+    .select-menu {
+        margin-top: 5px;
+        // background-color: $body;
+        border: 1px solid #D7D7D7;
+        opacity: 0;
+        width: 100%;
+        position: absolute;
+        top: 5px;
+        margin-top: 0;
+        height: 0;
+        z-index: 10000;
+        left: 0;
+        transition: 0.3s;
+        overflow: auto;
+        text-align: start;
+        overflow: hidden;
+
+        a {
+            transition: 200ms;
+            color: #1A1919;
+
+            @media (pointer: fine) and (hover: hover) {
+                &:hover {
+                    transition: 200ms;
+                }
+            }
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 6px;
+            padding-right: 6px;
+
+            li {
+                padding-top: 8px;
+            }
+        }
+    }
+
+
+    .select-menu.show {
+        opacity: 1;
+        border-bottom: 1px solid #D7D7D7;
+        border-top: 1px solid #D7D7D7;
+        height: 70px;
+
+        @media screen and (max-width: 1200px) {
+            height: 108px;
+        }
+    }
+
+    .dropdown li {
+        margin-bottom: 3px;
+    }
+}

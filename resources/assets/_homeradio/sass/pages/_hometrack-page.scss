@@ -1,0 +1,101 @@
+@use "../abstract/" as *;
+
+.hometrack-page {
+    padding-block: clamp(6.875rem, 4.95vw + 5.545rem, 10rem) clamp(3.125rem, 8.218vw + 0.916rem, 8.313rem); //160->110 133->50
+
+    .row {
+        --bs-gutter-x: 20px;
+        row-gap: 20px;
+    }
+
+    .all-hometracks {
+        margin-top: 54px;
+    }
+
+    .hometrack-box {
+        padding: 20px;
+        border-radius: 10px;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            border-radius: inherit;
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            z-index: -1;
+        }
+    }
+}
+
+
+.hometrack-box {
+    display: flex;
+    flex-direction: column;
+    row-gap: 23px;
+
+    &.zoom {
+        @include hover() {
+            .circle-button {
+                rotate: 45deg;
+            }
+        }
+    }
+
+    .image-wrapper {
+        border-radius: 100%;
+        aspect-ratio: 1;
+        width: 100%;
+
+        img {
+            min-height: 100%;
+        }
+    }
+
+    .bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .circle-button {
+        width: 30px;
+        height: 30px;
+
+        svg {
+            width: 12px;
+            height: auto;
+        }
+    }
+}
+
+
+
+html[data-theme="dark"] {
+    .hometrack-page {
+        .hometrack-box {
+            background: #F0F0F026;
+
+            &::before {
+                background: linear-gradient(146.28deg, #FFFFFF 8.26%, rgba(255, 255, 255, 0) 104.85%);
+            }
+        }
+    }
+}
+
+html[data-theme="light"] {
+    .hometrack-page {
+        .hometrack-box {
+            background: #1A1A1A1A;
+
+            &::before {
+                background: linear-gradient(146.28deg, rgba(26, 26, 26, 0.5) 8.26%, rgba(26, 26, 26, 0) 104.85%);
+            }
+        }
+    }
+}

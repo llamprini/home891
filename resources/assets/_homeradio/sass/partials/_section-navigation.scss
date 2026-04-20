@@ -1,0 +1,103 @@
+@use "../abstract/" as *;
+
+.section-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    max-width: 100%;
+
+    .dropdown {
+        overflow: auto;
+        display: flex;
+        column-gap: clamp(0.625rem, 1.98vw + 0.093rem, 1.875rem); //30->10
+    }
+
+
+    button {
+        padding: 10px clamp(0.938rem, 0.495vw + 0.804rem, 1.25rem); //20->15
+        background-color: transparent;
+        border-radius: 30px;
+        flex-shrink: 0;
+        position: relative;
+        border: 1px solid transparent;
+        overflow: hidden;
+        transition: var(--transition);
+
+        span {
+            position: relative;
+            z-index: 1;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            width: 100%;
+            inset-inline: 0;
+            height: 100%;
+            transform: translateY(100%);
+            transition: var(--transition);
+            border-radius: inherit;
+            bottom: 0;
+            animation: slide-out var(--transition) forwards;
+        }
+
+        @include hover() {
+            &::before {
+                animation: slide-in var(--transition) forwards;
+            }
+        }
+    }
+}
+
+.tab {
+    display: none;
+}
+
+
+.homecast-page {
+    .tab {
+        &.active {
+            display: block;
+        }
+    }
+}
+
+
+html[data-theme="dark"] .section-navigation {
+    button {
+        &.active {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        @include hover() {
+            border: 1px solid var(--white);
+            color: var(--black);
+
+            &::before {
+                background-color: var(--white);
+            }
+        }
+    }
+}
+
+html[data-theme="light"] .section-navigation {
+    button {
+        &.active {
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        @include hover() {
+            border: 1px solid var(--black);
+            color: var(--white);
+
+            &::before {
+                background-color: var(--black);
+            }
+        }
+    }
+}

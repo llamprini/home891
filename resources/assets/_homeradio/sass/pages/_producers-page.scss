@@ -1,0 +1,77 @@
+@use "../abstract/" as *;
+
+.producers-page {
+    padding-block: clamp(6.875rem, 4.95vw + 5.545rem, 10rem) clamp(6.75rem, 11.089vw + 3.77rem, 13.75rem); //160->110 220->108
+
+    .row {
+        row-gap: 60px;
+        --bs-gutter-x: 20px;
+
+        @include breakpoint('<lg') {
+            row-gap: 70px;
+        }
+
+    }
+
+    .section-title.center {
+        margin-bottom: clamp(2.5rem, 1.485vw + 2.101rem, 3.438rem); //55->40
+    }
+
+    .producer {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        height: 100%;
+
+        .image-wrapper {
+            border-radius: 20px;
+
+            img {
+                aspect-ratio: 400/291;
+
+                @include breakpoint('<lg') {
+                    aspect-ratio: 390/413;
+                }
+            }
+
+            .text {
+                row-gap: 20px;
+            }
+        }
+
+        .smallest-line {
+            color: #CECECE;
+        }
+
+        @include hover() {
+            .button-2 {
+                color: var(--brown);
+            }
+        }
+
+
+    }
+}
+
+
+html[data-theme="dark"] {
+    .producers-page {
+        background: #1A1A1A;
+
+        .smallest-line {
+            color: #CECECE;
+        }
+    }
+}
+
+
+
+html[data-theme="light"] {
+    .producers-page {
+        background: #FAFAFA;
+
+        .smallest-line {
+            color: #7E7E7E;
+        }
+    }
+}

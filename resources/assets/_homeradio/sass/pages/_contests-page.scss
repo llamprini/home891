@@ -1,0 +1,114 @@
+@use "../abstract/" as *;
+
+.contests-page {
+    padding-block: clamp(6.875rem, 4.95vw + 5.545rem, 10rem) 75px; //160->110
+
+    @include breakpoint('<lg') {
+        padding-bottom: 90px;
+    }
+
+    .row {
+        --bs-gutter-x: 20px;
+        row-gap: clamp(2.5rem, 5.941vw + 0.903rem, 6.25rem); //100->40      ///////////////////////
+    }
+
+    .text {
+        margin-bottom: 40px;
+        row-gap: clamp(0.938rem, 1.485vw + 0.538rem, 1.875rem); //30->15
+        max-width: 655px;
+    }
+
+    .button-1 {
+        margin-top: clamp(1.875rem, 1.98vw + 1.343rem, 3.125rem); //50->30
+    }
+}
+
+
+.contest {
+    display: flex;
+    flex-direction: column;
+    row-gap: clamp(0.625rem, 0.99vw + 0.359rem, 1.25rem); //20->10
+    justify-content: space-between;
+
+    .small-title {
+        @include font(26px, 1, 500);
+    }
+
+    // &.not-active {
+    //     pointer-events: none;
+    //     cursor: not-allowed;
+
+    //     .expired {
+    //         display: block;
+    //     }
+    // }
+
+    // .expired {
+    //     padding: 7px 15px;
+    //     position: relative;
+    //     display: none;
+    //     margin-left: auto;
+    //     border-radius: 30px;
+    //     @include font(14px, 20px, 300);
+
+
+    //     &::before {
+    //         content: "";
+    //         position: absolute;
+    //         inset: 0;
+    //         padding: 1px;
+    //         border-radius: inherit;
+    //         -webkit-mask:
+    //             linear-gradient(#fff 0 0) content-box,
+    //             linear-gradient(#fff 0 0);
+    //         -webkit-mask-composite: xor;
+    //         mask-composite: exclude;
+    //         z-index: 10;
+    //     }
+    // }
+
+    .top {
+        .image-wrapper {
+            margin-bottom: clamp(1.25rem, 0.99vw + 0.984rem, 1.875rem); //30->20
+            border-radius: 20px;
+
+            img {
+                // aspect-ratio: 463/543;
+
+                @include breakpoint('<lg') {
+                    aspect-ratio: 391/396;
+                }
+            }
+        }
+    }
+}
+
+
+html[data-theme="dark"] {
+    // .expired {
+    //     background: #FAFAFA1A;
+
+    //     &::before {
+    //         background: linear-gradient(95.23deg, #FAFAFA 16.7%, rgba(250, 250, 250, 0) 98.12%);
+    //     }
+    // }
+
+    .date {
+        color: #CECECE;
+    }
+}
+
+
+html[data-theme="light"] {
+    // .expired {
+    //     background: #1A1A1A1A;
+
+    //     &::before {
+    //         background: linear-gradient(115.19deg, rgba(26, 26, 26, 0.5) 13.33%, rgba(26, 26, 26, 0) 88.45%);
+    //     }
+    // }
+
+    .date {
+        color: #7E7E7E;
+    }
+}

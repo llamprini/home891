@@ -1,0 +1,33 @@
+.volume {
+    display: flex;
+    align-items: center;
+    column-gap: 9px;
+
+    .volume-bar {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        max-width: 114px;
+        height: 2px;
+        background: #4A4642;
+        border-radius: 5px;
+        outline: none;
+        transition: 0.3s;
+        cursor: pointer;
+        border-radius: 30px;
+    }
+
+    /* Chrome / Safari thumb */
+    .volume-bar::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        background: transparent;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.4);
+        transition: 0.3s;
+        opacity: 0;
+    }
+}

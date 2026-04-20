@@ -1,0 +1,91 @@
+@use "../abstract/" as *;
+
+
+
+.mouse-hover-section {
+    @include breakpoint('>lg') {
+        cursor: none;
+
+        a {
+            cursor: none;
+        }
+    }
+}
+
+
+.mouse-hover {
+    backdrop-filter: blur(24px);
+    background: #FAFAFA26;
+    width: 167px;
+    aspect-ratio: 1;
+    position: absolute;
+    border-radius: 100%;
+    z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scale: 0;
+    transition: transform 0.3s ease, scale 0.3s ease;
+    will-change: transform;
+    pointer-events: none;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 2px;
+        border-radius: inherit;
+        background: linear-gradient(214.68deg, rgba(255, 255, 255, 0.5) 9.35%, rgba(255, 255, 255, 0) 75.69%);
+        -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        z-index: -1;
+    }
+
+    .icon {
+        position: absolute;
+        z-index: 5;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: rotate 5s linear infinite;
+        aspect-ratio: 1 !important;
+    }
+
+    .content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .circle-button {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        z-index: 5;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--white);
+        color: var(--black);
+
+        svg {
+            width: 15px;
+            height: auto;
+        }
+    }
+}
+
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}

@@ -1,0 +1,132 @@
+@use "../abstract/" as *;
+
+.single-homecast {
+    padding-block: clamp(6.875rem, 4.95vw + 5.545rem, 10rem) clamp(2.375rem, 1.98vw + 1.843rem, 3.625rem); //160->110 //58->38
+
+    .paragraph-title.all-episodes {
+        margin-bottom: 20px;
+
+        @include breakpoint('<lg') {
+            margin-bottom: 40px;
+        }
+    }
+
+    .text {
+        max-width: 790px;
+        row-gap: 15px;
+        margin-bottom: 50px;
+
+        @include breakpoint('<lg') {
+            margin-bottom: 65px;
+        }
+    }
+
+    .popular-podcasts {
+        .homecast {
+            .content {
+                @include breakpoint('<lg') {
+                    flex-direction: column;
+                    row-gap: 20px;
+                }
+            }
+
+            .social-media-wrapper {
+                @include breakpoint('>lg') {
+                    margin-bottom: 30px;
+                }
+
+                .spotify {
+                    display: block;
+                }
+
+                .mail {
+                    display: none;
+                }
+            }
+
+            .text {
+                margin-top: 20px;
+
+                @include breakpoint('<lg') {
+                    row-gap: 20px;
+                }
+            }
+
+            .listen {
+                @include breakpoint('<lg') {
+                    margin-top: 20px;
+                }
+            }
+
+            .image-wrapper {
+                @include breakpoint('>lg') {
+                    max-width: 285px !important;
+                }
+
+                @include breakpoint('<lg') {
+                    max-width: unset;
+                    aspect-ratio: 331/186;
+                }
+            }
+        }
+
+    }
+
+    .homecast-swiper {
+        padding-bottom: 0;
+    }
+
+    .button-1 {
+        margin-top: clamp(1.875rem, 1.98vw + 1.343rem, 3.125rem); //50->30
+    }
+}
+
+
+
+.homecast {
+    &.zoom {
+        display: flex;
+        overflow: hidden;
+
+        .listen {
+            transition: var(--transition);
+        }
+    }
+}
+
+html[data-theme="dark"] {
+    .homecast {
+        &.zoom {
+            @include hover() {
+                .listen {
+                    background-color: var(--white);
+                    color: var(--black);
+                }
+            }
+        }
+    }
+}
+
+
+html[data-theme="light"] {
+    .homecast {
+        &.zoom:not(.popular-podcasts .zoom) {
+            @include hover() {
+                .listen {
+                    background-color: var(--black);
+                    color: var(--white);
+                }
+            }
+        }
+
+    }
+
+    .popular-podcasts .zoom {
+        @include hover() {
+            .listen {
+                background-color: var(--white);
+                color: var(--black);
+            }
+        }
+    }
+}

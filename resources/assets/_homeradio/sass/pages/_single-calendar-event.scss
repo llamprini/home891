@@ -1,0 +1,35 @@
+@use "../abstract/" as *;
+
+.single-calendar-event {
+    padding-bottom: clamp(3.125rem, 5.941vw + 1.528rem, 6.875rem); //110->50
+
+    @include breakpoint('<lg') {
+        padding-top: 116px;
+    }
+
+    .section-title {
+        svg {
+            transition: var(--transition);
+
+            @include hover() {
+                color: #BD9F6C;
+            }
+        }
+    }
+
+    .related-tracks {
+        padding-top: clamp(6.25rem, 6.931vw + 4.387rem, 10.625rem); //170->100
+
+        .section-title {
+            margin-bottom: 60px;
+        }
+    }
+
+    .text {
+        padding-top: 50px;
+
+        .paragraph-title {
+            margin-bottom: 15px;
+        }
+    }
+}

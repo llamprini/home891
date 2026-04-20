@@ -1,0 +1,105 @@
+@use "../abstract/" as *;
+
+*,
+*::before,
+*::after,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+button {
+    background: unset;
+    border: unset;
+    text-align: center;
+}
+
+
+a,
+button {
+    font: inherit;
+    color: inherit;
+
+    &:focus {
+        box-shadow: none;
+        outline: none;
+    }
+}
+
+
+p {
+    margin-bottom: unset;
+}
+
+
+strong {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+ol,
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+img,
+video,
+source {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+input,
+textarea {
+    background: none;
+    border: none;
+
+    &:focus,
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+blockquote {
+    margin: unset;
+}
+
+//* Google maps API styles
+.gm-ui-hover-effect,
+.gm-style-iw-tc {
+    display: none !important;
+}
+
+.gm-style .gm-style-iw-c {
+    box-shadow: unset !important;
+}
+
+.gm-style iframe+div {
+    border: none !important;
+}
+
+//* Bootstrap reset
+
+.form-control {
+    border: unset;
+    border-radius: unset;
+    background: transparent;
+
+    &:focus-visible {
+        box-shadow: none;
+        background-color: transparent;
+    }
+}
+
+.form-floating>.form-control:not(:placeholder-shown)~label::after {
+    content: none;
+}
